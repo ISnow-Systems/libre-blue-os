@@ -1,38 +1,21 @@
-# open.Yellow.osのbuild tool
-open.Yellow.osは、 MX LinuxのGitHubで公開されている「build-iso-mx」をカスタマイズしたビルドツールを使用しております。
+# libre-blue-os ビルドツール
+## 概要
+libre-blue-osでは、MX Linuxが公開しているビルドツール`build-iso-mx`のカスタム版を使用しています。
 
+## ビルドと環境構築
+### 環境構築
+1. ビルドに必要なパッケージをインストールします。
+   - `sudo apt install debootstrap syslinux-utils zsync expect git xorriso mkisofs genisoimage binutils`
+### ビルド
+1. 任意のディレクトリ(空で無くとも良い)で以下のコマンドを実行し、GitHubからリポジトリのソースコードを取得します
+   - 最新版のみビルドする場合: `git clone --depth 1 https://github.com/ISnow-Systems/libre-blue-os.git`
+   - 過去のバージョンに遡ってビルドする場合: `git clone https://github.com/ISnow-Systems/libre-blue-os.git`
+     - 特定のタグ・ブランチでビルドする場合: `git clone -b <branch> https://github.com/ISnow-Systems/libre-blue-os.git`
+2. `cd libre-blue-os`を実行してカレントディレクトリを変更します
+3. `sudo ./build-iso -0` を実行してビルドを開始します。
+   - オプション`-0`は処理を最初から行う場合に実行します
+   - 中断地点からの継続を行う場合はここに**0**以外の数値を入力します。
 
-# 環境
-open.Yellow.osでビルドすることを想定しています。
-　※DebianまたはDebian派生のOSでもビルドできると思いますが、詳しい検証は行っていません。
-
-
-
-# 事前準備
-ビルドに必要なパッケージをインストールします。
-
-`sudo apt install debootstrap syslinux-utils zsync expect git xorriso mkisofs genisoimage`
-
-※Ubuntuでビルドする場合は「binutils」も必要です。
-
-# ビルド
-## oYoのGitからopen-yellow-osのソースを取得する
-任意のディレクトリで以下のコマンドを実行し、Gitからopen-yellow-osのソースを取得します。
-
-`git clone https://github.com/openyellowos/open-Yellow-os.git`
-
-
-## build-iso-linuxディレクトリへ移動する
-ターミナルを起動しopen-yellow-osディレクトリに移動します。
-
-`cd open-yellow-os`
-
-
-## 以下のコマンドで、ビルドを開始する
-ターミナルで以下のコマンドを実行し、ビルドを開始します。
-
-`sudo ./build-iso -0`
-
-※[-0]は、一番最初から処理を実行するためのオプションです。
-　build-isoは、処理の途中からやり直すこともできます。
-　その場合は、0以外の数字を指定します。 
+## ライセンス
+本ソースコードはGPL 3.0の条件に従い公開されています。  
+ライセンスは[こちらから](https://github.com/ISnow-Systems/libre-blue-os/tree/master/LICENSE)ご確認いただけます。
